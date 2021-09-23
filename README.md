@@ -13,6 +13,11 @@ Things done so far:
 - Insert data into table
 - Query data
 
+2. Execute transactions and query data using aggregate functions
+
+- Use database transactions
+- Use aggregate functions for more complex queries
+
 ## Technologies Used
 
 PostgreSQL
