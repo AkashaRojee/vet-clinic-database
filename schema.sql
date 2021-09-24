@@ -14,4 +14,48 @@ CREATE TABLE animals(
 
 ALTER TABLE animals
 ADD COLUMN
-  species varchar(25);
+  species VARCHAR(25);
+
+CREATE TABLE owners(
+  id        INT GENERATED ALWAYS AS IDENTITY,
+  full_name VARCHAR(50),
+  age       INT,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE species(
+  id  INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(25),
+  PRIMARY KEY (id)
+);
+
+------------------------
+-- Modify animals table:
+------------------------
+
+-- Remove column species
+
+ALTER TABLE animals
+DROP COLUMN species;
+
+-- Add column species_id which is a foreign key referencing species table
+
+ALTER TABLE animals
+ADD COLUMN
+  species_id INT,
+ADD CONSTRAINT constraint_species_id
+  FOREIGN KEY (species_id)
+  REFERENCES species(id)
+  ON UPDATE CASCADE
+  ON DELETE CASCADE;
+
+-- Add column owner_id which is a foreign key referencing the owners table
+
+ALTER TABLE animals
+ADD COLUMN
+  owner_id INT,
+ADD CONSTRAINT constraint_owner_id
+  FOREIGN KEY (owner_id)
+  REFERENCES owners(id)
+  ON UPDATE CASCADE
+  ON DELETE CASCADE;
