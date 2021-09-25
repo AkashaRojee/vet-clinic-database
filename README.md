@@ -23,6 +23,11 @@ Things done so far:
 - Add foreign keys to model 1-many relationships
 - Query data using JOIN
 
+4. Add join tables
+
+- Add join tables to model many-many relationships
+- Query data from all tables
+
 ## Technologies Used
 
 PostgreSQL
