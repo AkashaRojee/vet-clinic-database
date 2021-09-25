@@ -18,6 +18,11 @@ Things done so far:
 - Use database transactions
 - Use aggregate functions for more complex queries
 
+3. Query multiple tables
+
+- Add foreign keys to model 1-many relationships
+- Query data using JOIN
+
 ## Technologies Used
 
 PostgreSQL
