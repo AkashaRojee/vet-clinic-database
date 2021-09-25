@@ -175,13 +175,3 @@ VALUES
   ((SELECT id FROM animals WHERE name = 'Blossom'),
   (SELECT id FROM vets WHERE name = 'William Tatcher'),
   '11/01/2021');
-
-  --   ((SELECT id FROM animals WHERE name = 'Plantmon'),
-  -- (SELECT id FROM vets WHERE name = 'Maisy Smith'),
-  -- '21/12/2019'),
-  -- ((SELECT id FROM animals WHERE name = 'Plantmon'),
-  -- (SELECT id FROM vets WHERE name = 'William Tatcher'),
-  -- '10/08/2020'),
-  -- ((SELECT id FROM animals WHERE name = 'Plantmon'),
-  -- (SELECT id FROM vets WHERE name = 'Maisy Smith'),
-  -- '07/04/2021'),
