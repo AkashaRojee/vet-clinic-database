@@ -59,3 +59,54 @@ ADD CONSTRAINT constraint_owner_id
   REFERENCES owners(id)
   ON UPDATE CASCADE
   ON DELETE CASCADE;
+
+-- Create a table named vets with the following columns:
+-- id: integer (set it as autoincremented PRIMARY KEY)
+-- name: string
+-- age: integer
+-- date_of_graduation: date
+
+CREATE TABLE vets(
+  id                  INT GENERATED ALWAYS AS IDENTITY,
+  name                VARCHAR(50),
+  age                 INT,
+  date_of_graduation  DATE,
+  PRIMARY KEY (id)
+);
+
+-- There is a many-to-many relationship between the tables species and vets: a vet can specialize in multiple species, and a species can have multiple vets specialized in it. Create a "join table" called specializations to handle this relationship.
+
+CREATE TABLE specializations(
+  vet_id  INT,
+  species_id  INT,
+  PRIMARY KEY (vet_id, species_id),
+  CONSTRAINT constraint_vet_id
+    FOREIGN KEY (vet_id)
+    REFERENCES vets(id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  CONSTRAINT constraint_species_id
+    FOREIGN KEY (species_id)
+    REFERENCES species(id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+);
+
+-- There is a many-to-many relationship between the tables animals and vets: an animal can visit multiple vets and one vet can be visited by multiple animals. Create a "join table" called visits to handle this relationship, it should also keep track of the date of the visit.
+
+CREATE TABLE visits(
+  vet_id      INT,
+  animal_id   INT,
+  visit_date  DATE,
+  PRIMARY KEY (vet_id, animal_id, visit_date),
+  CONSTRAINT constraint_vet_id
+    FOREIGN KEY (vet_id)
+    REFERENCES vets(id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  CONSTRAINT constraint_animal_id
+    FOREIGN KEY (animal_id)
+    REFERENCES animals(id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+);
